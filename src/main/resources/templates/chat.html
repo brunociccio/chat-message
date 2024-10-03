@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Chat</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="script.js"></script>
+</head>
+<body>
+<h1>Chat Room</h1>
+
+<div id="messages" class="message-list">
+    <section th:each="message : ${messages}" class="message">
+        <img th:src="${'https://avatar.iran.liara.run/public/boy?username=' + #strings.arraySplit(message, ':')[0]}" alt="avatar" class="avatar">
+        <div class="nes-balloon from-left">
+            <p th:text="${#strings.arraySplit(message, ':')[1]}"></p>
+        </div>
+    </section>
+</div>
+
+<form action="/send" method="post" >
+    <div>
+        <input type="text" id="message"  name="message" class="nes-input is-dark" placeholder="Digite sua mensagem" required autofocus>
+        <button type="submit" class="nes-btn is-success">Enviar</button>
+    </div>
+
+    <div>
+        <input th:value="${username}" type="text" id="username" name="username" class="nes-input is-dark" placeholder="Seu nome" required>
+    </div>
+</form>
+
+<div id="scroll-anchor"></div>
+
+</body>
+</html>

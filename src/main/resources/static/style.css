@@ -1,0 +1,30 @@
+body{
+    padding: 2rem 2rem 12rem 2rem;
+
+}
+
+form{
+    display: flex;
+    width: 100vw;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+}
+
+form div{
+    display: flex;
+    gap: 2rem;
+}
+
+#username{
+    width: 12rem;
+}
+
+.avatar{
+    width: 80px;
+    height: 80px;
+}
